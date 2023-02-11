@@ -1,0 +1,52 @@
+---
+import { Icon } from "astro-icon";
+---
+
+<script>
+  const menuOpen = document.querySelector(".menu-open");
+  const menuClose = document.querySelector(".menu-close");
+  const menuList = document.querySelector(".menu-list");
+  //Navigation Menu Open
+  menuOpen?.addEventListener("click", () => {
+    menuOpen.classList.add("hidden");
+    menuClose?.classList.remove("hidden");
+    menuList?.classList.add("flex");
+    menuList?.classList.remove("hidden");
+  });
+  //Nevigation Menu Closed
+  menuClose?.addEventListener("click", () => {
+    menuClose?.classList.add("hidden");
+    menuOpen?.classList.remove("hidden");
+    menuList?.classList.add("hidden");
+    menuList?.classList.remove("flex");
+  });
+</script>
+
+<nav
+  class="fixed w-full transition-all duration-[500ms] ease-in top-0 right-0 z-50 flex items-center justify-between bg-transparent px-16 py-10 max-xl:px-8 max-xl:py-4"
+>
+  <a href="#" class="flex items-center gap-x-2">
+    <Icon pack="mdi" name="weights" class="w-7 text-green-400" />
+    <span class="font-bold text-xl uppercase">Fitness Life</span>
+  </a>
+
+  <ul
+    class="menu-list hidden absolute flex-col justify-start rounded-xl text-center gap-y-2 max-md:transition-all max-md:duration-[500ms] max-md:ease-in top-full right-[2%] w-56 h-[34vh] bg-green-400 md:flex md:relative md:flex-row md:w-auto md:h-auto md:bg-transparent md:gap-x-8 font-semibold max-xl:gap-x-5"
+  >
+    <li class="hover:text-green-400 mt-4 md:mt-0"><a href="#">Home</a></li>
+    <li class="hover:text-green-400"><a href="#">About</a></li>
+    <li class="hover:text-green-400"><a href="#">Classes</a></li>
+    <li class="hover:text-green-400"><a href="#">Prices</a></li>
+    <li class="hover:text-green-400"><a href="#">Contact Us</a></li>
+  </ul>
+
+  <div class="md:hidden">
+    <Icon pack="mdi" name="menu" class="menu-open w-7" />
+    <Icon pack="mdi" name="close" class="menu-close hidden w-7" />
+  </div>
+  <div class="hidden md:block">
+    <button class="bg-white px-10 py-2 text-black font-semibold rounded-br-3xl"
+      >Sign Up</button
+    >
+  </div>
+</nav>
